@@ -1,4 +1,4 @@
-package com.example.gestiondepedidos.models;
+package com.example.gestiondepedidos.models.usuario;
 
 import lombok.*;
 
@@ -6,6 +6,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Usuario {
+    private Long id;
     private String nombre;
     private String email;
     private String password;

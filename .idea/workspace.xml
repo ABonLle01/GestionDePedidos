@@ -4,13 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="190a4b9f-84ff-4cfb-85b0-f35a744c9774" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="190a4b9f-84ff-4cfb-85b0-f35a744c9774" name="Changes" comment="conexiones">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestiondepedidos/controllers/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestiondepedidos/controllers/TablaPrincipal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestiondepedidos/models/usuario/UsuarioDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestiondepedidos/models/usuario/UsuarioDAOImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestiondepedidos/views/tablaPrincipal.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestiondepedidos/views/ventanaLogin.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestiondepedidos/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestiondepedidos/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestiondepedidos/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestiondepedidos/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestiondepedidos/LoginController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestiondepedidos/domain/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestiondepedidos/domain/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestiondepedidos/models/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestiondepedidos/models/usuario/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestiondepedidos/ventanaLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestiondepedidos/ventanaLogin.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -54,7 +63,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/AlvaroBonillaLledó/IdeaProjects/GestionDePedidos",
+    "last_opened_file_path": "C:/Users/alvar/IdeaProjects/GestionDePedidos",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -69,6 +78,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\alvar\IdeaProjects\GestionDePedidos\src\main\resources\com\example\gestiondepedidos\views" />
       <recent name="C:\Users\alvar\IdeaProjects\GestionDePedidos\src\main\resources" />
       <recent name="C:\Users\alvar\IdeaProjects\GestionDePedidos\src\main\resources\com\example\gestiondepedidos" />
       <recent name="C:\Users\alvar\IdeaProjects\GestionDePedidos\src" />
@@ -79,7 +89,7 @@
   </component>
   <component name="RunManager">
     <configuration name="ejecutar" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.example.gestiondepedidos.HelloApplication" />
+      <option name="MAIN_CLASS_NAME" value="com.example.gestiondepedidos.App" />
       <module name="GestionDePedidos" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -98,8 +108,6 @@
       <workItem from="1698254234681" duration="2782000" />
       <workItem from="1698490737951" duration="130000" />
       <workItem from="1698601185608" duration="3393000" />
-      <workItem from="1698653632823" duration="3484000" />
-      <workItem from="1698741772430" duration="1461000" />
     </task>
     <servers />
   </component>

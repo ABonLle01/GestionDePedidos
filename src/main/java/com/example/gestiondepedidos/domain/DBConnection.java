@@ -1,6 +1,6 @@
 package com.example.gestiondepedidos.domain;
 
-import com.example.gestiondepedidos.HelloApplication;
+import com.example.gestiondepedidos.App;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -25,7 +25,7 @@ public class DBConnection {
         var cfg = new Properties();
         try {
 
-            cfg.load(HelloApplication.class.getClassLoader().getResourceAsStream("bbdd.properties"));
+            cfg.load(App.class.getClassLoader().getResourceAsStream("bbdd.properties"));
             logger.info("Configuración cargada");
             url="jdbc:mysql://"+cfg.getProperty("host")+":"+cfg.getProperty("port")+"/"+cfg.getProperty("dbname");
             logger.info(url);
