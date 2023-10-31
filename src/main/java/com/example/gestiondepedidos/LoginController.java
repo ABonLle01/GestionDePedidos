@@ -51,24 +51,30 @@ public class LoginController implements Initializable {
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query = "SELECT * FROM usuarios WHERE email = ? AND password = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, email);
-            preparedStatement.setString(2, password);
+            if(connection != null){
+                String query = "SELECT * FROM usuarios WHERE email = ? AND password = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, email);
+                preparedStatement.setString(2, password);
 
-            ResultSet resultSet = preparedStatement.executeQuery();
+                ResultSet resultSet = preparedStatement.executeQuery();
 
-            if (resultSet.next()) {
-                System.out.println("Iniciando sesión");
-            } else {
-                Alert alerta = new Alert(Alert.AlertType.WARNING);
-                alerta.setTitle("Usuario no encontrado");
-                alerta.showAndWait();
+                if (resultSet.next()) {
+                    System.out.println("Logging in");
+                } else {
+                    Alert alerta = new Alert(Alert.AlertType.WARNING);
+                    alerta.setTitle("User not found");
+                    alerta.showAndWait();
+                }
+
+                resultSet.close();
+                preparedStatement.close();
+                connection.close();
+            }else{
+                System.out.println("Connection is null");
             }
 
-            resultSet.close();
-            preparedStatement.close();
-            connection.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

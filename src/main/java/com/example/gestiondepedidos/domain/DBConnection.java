@@ -34,15 +34,17 @@ public class DBConnection {
             password = cfg.getProperty("pass");
 
         } catch (IOException e) {
-            logger.severe("Error procesando configuración");
+            logger.severe("Error processing configuration");
             throw new RuntimeException(e);
         }
 
         try {
             connection = DriverManager.getConnection(url, user, password);
-            logger.info("Conexión exitosa a la base de datos");
+
+            logger.info("Successful connection to database");
         } catch (SQLException e) {
-            logger.info("Error al conectar a la base de datos");
+            logger.info("Error trying to connect to database");
+            System.out.println(e.getMessage());
         }
     }
 

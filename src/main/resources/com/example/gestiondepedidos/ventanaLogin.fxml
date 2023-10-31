@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="595.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestiondepedidos.LoginController">
+<BorderPane prefHeight="595.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestiondepedidos.LoginController">
    <center>
       <VBox alignment="CENTER" prefHeight="285.0" prefWidth="382.0" spacing="20.0" BorderPane.alignment="CENTER">
         <padding>
@@ -71,4 +71,11 @@
          </BorderPane.margin>
       </ImageView>
    </top>
+   <bottom>
+      <Label fx:id="info" text="Label" BorderPane.alignment="CENTER_LEFT">
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+         </BorderPane.margin>
+      </Label>
+   </bottom>
 </BorderPane>
