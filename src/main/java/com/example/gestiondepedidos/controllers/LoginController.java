@@ -2,6 +2,7 @@ package com.example.gestiondepedidos.controllers;
 
 import com.example.gestiondepedidos.App;
 import com.example.gestiondepedidos.domain.DBConnection;
+import com.example.gestiondepedidos.models.usuario.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,11 +24,13 @@ public class LoginController implements Initializable {
     @FXML
     private Button btnAcceder;
 
-    String nombreUsuario="";
+    Long id;
     String email="";
     String password="";
 
-    Connection connection;
+    static Long id_usuario;
+    Connection connection = DBConnection.getConnection();
+    UsuarioDAOImp usuarioDAO = new UsuarioDAOImp();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -40,7 +43,6 @@ public class LoginController implements Initializable {
                 info.setText("No se pudo establecer la conexión a la base de datos");
                 info.setStyle("-fx-text-fill: red");
             }
-            //connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,56 +55,32 @@ public class LoginController implements Initializable {
         email = txtEmail.getText();
         password = txtPass.getText();
 
+        if (!Objects.equals(email, "") && !Objects.equals(password, "")) {
+            Usuario usuario = UsuarioDAOImp.login(email, password);
 
-        if(!Objects.equals(email, "") && !Objects.equals(password, "")){
-            try {
-                connection = DBConnection.getConnection();
-                if(connection != null){
-                    String query = "SELECT * FROM usuarios WHERE email = ? AND password = ?";
-                    PreparedStatement preparedStatement = connection.prepareStatement(query);
-                    preparedStatement.setString(1, email);
-                    preparedStatement.setString(2, password);
+            if (usuario != null) {
+                System.out.println(usuario.getNombre()+": Logging in");
+                id_usuario = usuario.getId();
 
-                    ResultSet resultSet = preparedStatement.executeQuery();
-
-                    if (resultSet.next()) {
-                        System.out.println("Logging in");
-
-                        nombreUsuario = resultSet.getString("nombre");
-                        System.out.println(nombreUsuario);
-                        App.loadFXML("views/tablaPrincipal.fxml");
-
-                        resultSet.close();
-                        preparedStatement.close();
-                        connection.close();
-
-                    } else {
-                        Alert alerta = new Alert(Alert.AlertType.WARNING);
-                        alerta.setTitle("User not found");
-                        alerta.setContentText("El nombre o la contraseña no coinciden");
-                        alerta.showAndWait();
-
-                        txtEmail.setText("");
-                        txtPass.setText("");
-
-                    }
-
-
-                }else{
-                    System.out.println("Connection is null");
+                try{
+                    App.loadFXML("views/tablaPrincipal.fxml");
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
                 }
 
+            } else {
+                Alert alerta = new Alert(Alert.AlertType.WARNING);
+                alerta.setTitle("User not found");
+                alerta.setContentText("El nombre o la contraseña no coinciden");
+                alerta.showAndWait();
 
-            } catch (Exception e) {
-                e.printStackTrace();
+                txtEmail.setText("");
+                txtPass.setText("");
             }
-        }else{
-            info.setText("Campos vacios !!!");
+        } else {
+            info.setText("Campos vacíos !!!");
             info.setStyle("-fx-text-fill: red");
         }
 
-
     }
-
-
 }

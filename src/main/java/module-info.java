@@ -4,7 +4,7 @@ module com.example.gestiondepedidos {
     requires java.sql;
     requires lombok;
 
-
+    opens com.example.gestiondepedidos.models.producto to javafx.base;
     opens com.example.gestiondepedidos to javafx.fxml;
     exports com.example.gestiondepedidos;
     exports com.example.gestiondepedidos.domain;

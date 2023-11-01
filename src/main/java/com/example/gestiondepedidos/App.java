@@ -2,6 +2,7 @@ package com.example.gestiondepedidos;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -28,6 +29,7 @@ public class App extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml));
             Scene scene = new Scene(fxmlLoader.load(),800,700);
             myStage.setScene(scene);
+            myStage.setMaximized(false);
             myStage.setMaximized(true);
         } catch (IOException e) {
             System.out.println("Error al cargar el FXML");

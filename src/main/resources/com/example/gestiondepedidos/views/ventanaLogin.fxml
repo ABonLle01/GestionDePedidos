@@ -31,7 +31,7 @@
                      <Font size="16.0" />
                   </font>
                </Label>
-               <TextField fx:id="txtEmail">
+               <TextField fx:id="txtEmail" text="juan@example.com">
                   <font>
                      <Font size="16.0" />
                   </font>
@@ -45,7 +45,7 @@
                      <Font size="16.0" />
                   </font>
                </Label>
-               <PasswordField fx:id="txtPass">
+               <PasswordField fx:id="txtPass" text="1234">
                   <font>
                      <Font size="16.0" />
                   </font>
