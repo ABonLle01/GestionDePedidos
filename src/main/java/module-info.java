@@ -4,11 +4,14 @@ module com.example.gestiondepedidos {
     requires java.sql;
     requires lombok;
 
-    opens com.example.gestiondepedidos.models.producto to javafx.base;
-    opens com.example.gestiondepedidos to javafx.fxml;
     exports com.example.gestiondepedidos;
     exports com.example.gestiondepedidos.domain;
-    opens com.example.gestiondepedidos.domain to javafx.fxml;
     exports com.example.gestiondepedidos.controllers;
+
+    opens com.example.gestiondepedidos.models.item to javafx.base;
+    opens com.example.gestiondepedidos.models.producto to javafx.base;
+    opens com.example.gestiondepedidos.models.pedido to javafx.base;
+    opens com.example.gestiondepedidos to javafx.fxml;
+    opens com.example.gestiondepedidos.domain to javafx.fxml;
     opens com.example.gestiondepedidos.controllers to javafx.fxml;
 }

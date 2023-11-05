@@ -14,7 +14,7 @@
 
 <BorderPane prefHeight="595.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestiondepedidos.controllers.LoginController">
    <center>
-      <VBox alignment="CENTER" prefHeight="285.0" prefWidth="382.0" spacing="20.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="285.0" prefWidth="382.0" spacing="35.0" BorderPane.alignment="CENTER">
         <padding>
           <Insets bottom="20.0" left="40.0" right="40.0" />
         </padding>
@@ -63,23 +63,26 @@
       </VBox>
    </center>
    <top>
-      <ImageView fitHeight="165.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+      <ImageView fitHeight="252.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
             <Image url="@../img/profile.png" />
          </image>
          <BorderPane.margin>
-            <Insets top="20.0" />
+            <Insets bottom="-20.0" top="20.0" />
          </BorderPane.margin>
       </ImageView>
    </top>
    <bottom>
       <Label fx:id="info" text="Label" BorderPane.alignment="CENTER_LEFT">
          <BorderPane.margin>
-            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+            <Insets bottom="5.0" right="5.0" top="10.0" />
          </BorderPane.margin>
          <font>
-            <Font name="System Bold" size="11.0" />
+            <Font size="14.0" />
          </font>
       </Label>
    </bottom>
+   <padding>
+      <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+   </padding>
 </BorderPane>

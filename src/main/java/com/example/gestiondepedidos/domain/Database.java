@@ -1,7 +1,8 @@
 package com.example.gestiondepedidos.domain;
 
-import java.sql.*;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.logging.Logger;
 
 public class Database {
@@ -30,54 +31,6 @@ public class Database {
         return connection;
     }
 
-    public static ArrayList<String[]> getAll(){
-
-        var salida = new ArrayList<String[]>();
-
-        try(Statement st = connection.createStatement()){
-            ResultSet rs = st.executeQuery("SELECT * FROM tareas");
-
-            while(rs.next()){
-                //salida.add(convertToRow(rs));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return salida;
-
-    }
-
-    /*
-    public static ArrayList<Usuario> getAllTarea(){
-        var salida = new ArrayList<Usuario>();
-
-        try(Statement st = connection.createStatement()){
-            ResultSet rs = st.executeQuery("SELECT * FROM tareas");
-
-            while(rs.next()){
-                salida.add(new UsuarioAdapter().loadFromResultSet(rs));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return salida;
-    }
-
-    private static String[] convertToRow(ResultSet rs) throws SQLException {
-        String[] fila = {
-                String.valueOf(rs.getInt("id")),
-                rs.getString("titulo"),
-                rs.getString("prioridad"),
-                String.valueOf(rs.getInt("usuario_id")),
-                rs.getString("categoria"),
-                rs.getString("descripcion")
-        };
-        return fila;
-
-    }
-*/
 
 
 }

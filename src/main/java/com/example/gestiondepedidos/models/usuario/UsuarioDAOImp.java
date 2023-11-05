@@ -38,34 +38,6 @@ public class UsuarioDAOImp implements UsuarioDAO{
         return null;
     }
 
-
-    @Override
-    public ArrayList<Usuario> loadAll() {
-        ArrayList<Usuario> usuarios = new ArrayList<>();
-
-        try {
-            String query = "SELECT * FROM usuarios";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-
-                Usuario usuario = new Usuario(
-                    resultSet.getLong("id"),
-                    resultSet.getString("nombre"),
-                    resultSet.getString("email"),
-                    resultSet.getString("password")
-                );
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return usuarios;
-    }
-
-
     public static Usuario login(String email, String password) {
         try {
             String query = "SELECT * FROM usuarios WHERE email = ? AND password = ?";

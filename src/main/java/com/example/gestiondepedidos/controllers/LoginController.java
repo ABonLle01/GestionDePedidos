@@ -28,6 +28,7 @@ public class LoginController implements Initializable {
     String email="";
     String password="";
 
+    static String nombre_usuario;
     static Long id_usuario;
     Connection connection = DBConnection.getConnection();
     UsuarioDAOImp usuarioDAO = new UsuarioDAOImp();
@@ -61,9 +62,10 @@ public class LoginController implements Initializable {
             if (usuario != null) {
                 System.out.println(usuario.getNombre()+": Logging in");
                 id_usuario = usuario.getId();
+                nombre_usuario = usuario.getNombre();
 
                 try{
-                    App.loadFXML("views/tablaPrincipal.fxml");
+                    App.loadFXML("views/tablaPrincipal.fxml","Productos");
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
