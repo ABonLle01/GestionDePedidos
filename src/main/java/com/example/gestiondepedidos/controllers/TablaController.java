@@ -29,6 +29,10 @@ import java.util.ResourceBundle;
 import static com.example.gestiondepedidos.controllers.LoginController.id_usuario;
 import static com.example.gestiondepedidos.controllers.LoginController.nombre_usuario;
 
+
+/**
+ * Controlador para la pantalla de tabla de pedidos de la aplicación.
+ */
 public class TablaController implements Initializable{
     @javafx.fxml.FXML
     private Label nombre;
@@ -54,6 +58,12 @@ public class TablaController implements Initializable{
 
     static Long codigoProducto;
 
+    /**
+     * Método que se ejecuta al inicializar el controlador.
+     *
+     * @param url La URL del archivo FXML.
+     * @param resourceBundle El paquete de recursos.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (usuario != null) {
@@ -83,21 +93,37 @@ public class TablaController implements Initializable{
 
     }
 
+    /**
+     * Método que cierra la aplicación.
+     *
+     * @param actionEvent El evento de acción.
+     */
     @javafx.fxml.FXML
-    public void logout(ActionEvent actionEvent) throws LoadException {
+    public void logout(ActionEvent actionEvent){
         System.out.println(usuario.getNombre()+": Logging out");
         nombre.setText("");
         App.loadFXML("views/ventanaLogin.fxml","Log in");
     }
 
+    /**
+     * Método que muestra los pedidos del usuario en la tabla.
+     *
+     * @param pedidos Los pedidos del usuario.
+     */
     private void mostrarPedidosEnTabla(ArrayList<Pedido> pedidos) {
         ObservableList<Pedido> data = FXCollections.observableArrayList(pedidos);
         tblPedidos.setItems(data);
     }
 
+    /**
+     * Método que se ejecuta al hacer clic en un pedido de la tabla.
+     *
+     * @param event El evento de acción.
+     */
     @javafx.fxml.FXML
-    public void mostrarPedido(Event event) throws LoadException {
+    public void mostrarPedido(Event event){
         Pedido p = tblPedidos.getSelectionModel().getSelectedItem();
+
         if(p!=null){
             codigoProducto = p.getCodigo();
             System.out.println("Selected item: "+p);

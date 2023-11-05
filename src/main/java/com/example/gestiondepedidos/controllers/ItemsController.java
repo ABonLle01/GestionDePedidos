@@ -7,7 +7,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.fxml.LoadException;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -20,8 +19,10 @@ import java.util.ResourceBundle;
 
 import static com.example.gestiondepedidos.controllers.LoginController.nombre_usuario;
 import static com.example.gestiondepedidos.controllers.TablaController.codigoProducto;
-import static com.example.gestiondepedidos.controllers.TablaController.usuario;
 
+/**
+ * Controlador para la pantalla de detalles de los items de un pedido.
+ */
 public class ItemsController implements Initializable {
 
 
@@ -44,7 +45,12 @@ public class ItemsController implements Initializable {
     @javafx.fxml.FXML
     private Button btnCerrar;
 
-
+    /**
+     * Método que se ejecuta al inicializar el controlador.
+     *
+     * @param url La URL del archivo FXML.
+     * @param resourceBundle El paquete de recursos.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -71,18 +77,33 @@ public class ItemsController implements Initializable {
 
     }
 
+    /**
+     * Método que muestra los items del pedido en la tabla.
+     *
+     * @param items Los items del pedido.
+     */
     private void mostrarItem(ArrayList<Item> items) {
         ObservableList<Item> data = FXCollections.observableArrayList(items);
         tabla.setItems(data);
     }
 
+    /**
+     * Método que vuelve a la pantalla de pedidos.
+     *
+     * @param actionEvent El evento de acción.
+     */
     @javafx.fxml.FXML
-    public void volver(ActionEvent actionEvent) throws LoadException {
+    public void volver(ActionEvent actionEvent){
         App.loadFXML("views/tablaPrincipal.fxml","Pedidos");
     }
 
+    /**
+     * Método que cierra la aplicación.
+     *
+     * @param actionEvent El evento de acción.
+     */
     @javafx.fxml.FXML
-    public void logout(ActionEvent actionEvent) throws LoadException {
+    public void logout(ActionEvent actionEvent){
         System.out.println(nombre_usuario+": Logging out");
         App.loadFXML("views/ventanaLogin.fxml","Log in");
     }

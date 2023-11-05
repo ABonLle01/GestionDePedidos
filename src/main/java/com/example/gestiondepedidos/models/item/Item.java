@@ -1,6 +1,5 @@
 package com.example.gestiondepedidos.models.item;
 
-import com.example.gestiondepedidos.models.producto.Producto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

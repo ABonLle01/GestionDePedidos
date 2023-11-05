@@ -13,7 +13,9 @@ import java.sql.*;
 import java.util.*;
 
 
-
+/**
+ * Controlador para la pantalla de inicio de sesión de la aplicación.
+ */
 public class LoginController implements Initializable {
     @FXML
     private Label info;
@@ -24,14 +26,20 @@ public class LoginController implements Initializable {
     @FXML
     private Button btnAcceder;
 
-    Long id;
+
     String email="";
     String password="";
 
     static String nombre_usuario;
     static Long id_usuario;
     Connection connection = DBConnection.getConnection();
-    UsuarioDAOImp usuarioDAO = new UsuarioDAOImp();
+
+    /**
+     * Método que se ejecuta al inicializar el controlador.
+     *
+     * @param url La URL del archivo FXML.
+     * @param resourceBundle El paquete de recursos.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -50,6 +58,11 @@ public class LoginController implements Initializable {
 
     }
 
+    /**
+     * Método que se ejecuta al hacer clic en el botón de inicio de sesión.
+     *
+     * @param actionEvent El evento de acción.
+     */
     @FXML
     public void iniciarSesion(ActionEvent actionEvent) {
 
@@ -79,6 +92,7 @@ public class LoginController implements Initializable {
                 txtEmail.setText("");
                 txtPass.setText("");
             }
+
         } else {
             info.setText("Campos vacíos !!!");
             info.setStyle("-fx-text-fill: red");

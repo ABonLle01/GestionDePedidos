@@ -1,21 +1,36 @@
 package com.example.gestiondepedidos.models.pedido;
 
 import com.example.gestiondepedidos.domain.DBConnection;
-import com.example.gestiondepedidos.models.producto.Producto;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+
+/**
+ * Clase que implementa la interfaz `PedidoDAO` y proporciona métodos para realizar operaciones con pedidos en la base de datos.
+ */
 public class PedidoDAOImp implements PedidoDAO {
 
+    //Conexion a la base de datos.
     private static Connection connection;
 
+    //Constructor que inicializa la conexion a la base de datos.
     public PedidoDAOImp() {
         this.connection = DBConnection.getConnection();
     }
 
+    //Consulta SQL para cargar los pedidos de la base de datos por el identificador del usuario.
     private static final String QUERY_PEDIDOS = "SELECT * FROM pedidos WHERE id_usuario = ?";
 
+    /**
+     * Método que carga los pedidos de un usuario de la base de datos por su identificador.
+     *
+     * @param idUsuario Identificador del usuario.
+     * @return Lista de pedidos del usuario cargados de la base de datos o una lista vacía si no se encuentran pedidos para el usuario especificado.
+     */
     @Override
     public ArrayList<Pedido> loadById(Long idUsuario) {
         ArrayList<Pedido> pedidos = new ArrayList<>();
@@ -31,9 +46,6 @@ public class PedidoDAOImp implements PedidoDAO {
                 pedido.setFecha(String.valueOf(resultSet.getDate("fecha")));
                 pedido.setTotal(resultSet.getInt("total"));
 
-//                ArrayList<Producto> productos = loadProductos(pedido.getId());
-//                pedido.setProductos(productos);
-
                 pedidos.add(pedido);
             }
 
@@ -43,35 +55,6 @@ public class PedidoDAOImp implements PedidoDAO {
         }
 
         return pedidos;
-    }
-
-
-
-    private ArrayList<Producto> loadProductos(Long pedidoId) {
-        ArrayList<Producto> productos = new ArrayList<>();
-
-        try (PreparedStatement pst = connection.prepareStatement("SELECT pr.* FROM productos pr " +
-                "INNER JOIN items pi ON pr.id = pi.id_producto " +
-                "WHERE pi.id = ?")) {
-            pst.setLong(1, pedidoId);
-            ResultSet resultSet = pst.executeQuery();
-
-            while (resultSet.next()) {
-                Producto producto = new Producto();
-                producto.setId(resultSet.getLong("id"));
-                producto.setNombre(resultSet.getString("nombre"));
-                producto.setPrecio(resultSet.getInt("precio"));
-                producto.setCantidad_disponible(resultSet.getInt("cantidad_disponible"));
-
-                productos.add(producto);
-            }
-
-            resultSet.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return productos;
     }
 
 
