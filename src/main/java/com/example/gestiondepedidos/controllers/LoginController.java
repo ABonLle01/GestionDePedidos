@@ -66,10 +66,14 @@ public class LoginController implements Initializable {
     @FXML
     public void iniciarSesion(ActionEvent actionEvent) {
 
-        email = txtEmail.getText();
-        password = txtPass.getText();
+        email = "juan@example.com";
+        password = "1234";
+
+//        email = txtEmail.getText();
+//        password = txtPass.getText();
 
         if (!Objects.equals(email, "") && !Objects.equals(password, "")) {
+            UsuarioDAOImp usuarioDAO = new UsuarioDAOImp();
             Usuario usuario = UsuarioDAOImp.login(email, password);
 
             if (usuario != null) {

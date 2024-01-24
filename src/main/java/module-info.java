@@ -8,6 +8,7 @@ module com.example.gestiondepedidos {
     exports com.example.gestiondepedidos.domain;
     exports com.example.gestiondepedidos.controllers;
 
+    opens com.example.gestiondepedidos.models.usuario to javafx.base;
     opens com.example.gestiondepedidos.models.item to javafx.base;
     opens com.example.gestiondepedidos.models.pedido to javafx.base;
     opens com.example.gestiondepedidos to javafx.fxml;

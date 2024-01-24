@@ -1,8 +1,6 @@
 package com.example.gestiondepedidos.models.item;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
@@ -13,3 +11,4 @@ public class Item {
     private int cantidad;
     private String nombre_producto;
 }
+

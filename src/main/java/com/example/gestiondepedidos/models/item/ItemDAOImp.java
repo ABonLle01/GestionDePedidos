@@ -29,7 +29,7 @@ public class ItemDAOImp implements ItemDAO{
     private static final String QUERY_ITEMS = "SELECT * FROM items WHERE codigo = ?";
 
     //Consulta SQL para cargar el nombre de un producto de la base de datos por su identificador.
-    private static final String nProductos = "SELECT * FROM productos WHERE id_producto = ?";
+    private static final String nProductos = "SELECT * FROM productos WHERE id = ?";
 
     /**
      * Método que carga los items de un pedido de la base de datos por su código.
@@ -47,7 +47,7 @@ public class ItemDAOImp implements ItemDAO{
 
             while (resultSet.next()) {
                 Item item = new Item();
-                item.setId(resultSet.getLong("id_item"));
+                item.setId(resultSet.getLong("id"));
                 item.setCodigo(resultSet.getLong("codigo"));
                 item.setCantidad(resultSet.getInt("cantidad"));
                 item.setNombre_producto(resultSet.getString("producto"));

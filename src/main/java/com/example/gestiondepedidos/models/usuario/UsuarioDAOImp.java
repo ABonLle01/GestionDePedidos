@@ -17,7 +17,8 @@ public class UsuarioDAOImp implements UsuarioDAO{
 
     //Constructor que inicializa la conexion a la base de datos
     public UsuarioDAOImp() {
-        this.connection = DBConnection.getConnection();
+        connection = DBConnection.getConnection();
+        System.out.println("Connection status in UsuarioDAOImp constructor: " + (connection != null ? "Connected" : "Not Connected"));
     }
 
     /**
@@ -57,6 +58,11 @@ public class UsuarioDAOImp implements UsuarioDAO{
      * @return Usuario autenticado o `null` si no se encuentra ningún usuario con el correo electrónico y contraseña especificados.
      */
     public static Usuario login(String email, String password) {
+        if (connection == null) {
+            System.out.println("Connection is null in login method");
+            return null;
+        }
+
         try {
             String query = "SELECT * FROM usuarios WHERE email = ? AND password = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -73,8 +79,14 @@ public class UsuarioDAOImp implements UsuarioDAO{
                     resultSet.getString("password")
                 );
             }
+
+            resultSet.close();
+            preparedStatement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
+        }catch (NullPointerException e){
+            e.getMessage();
         }
         return null;
     }

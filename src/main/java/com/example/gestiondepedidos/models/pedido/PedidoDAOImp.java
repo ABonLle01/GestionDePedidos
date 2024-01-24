@@ -41,7 +41,7 @@ public class PedidoDAOImp implements PedidoDAO {
 
             while (resultSet.next()) {
                 Pedido pedido = new Pedido();
-                pedido.setId(resultSet.getLong("id_pedido"));
+                pedido.setId(resultSet.getLong("id"));
                 pedido.setCodigo(resultSet.getLong("codigo_pedido"));
                 pedido.setFecha(String.valueOf(resultSet.getDate("fecha")));
                 pedido.setTotal(resultSet.getInt("total"));
